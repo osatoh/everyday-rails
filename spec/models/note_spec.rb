@@ -4,14 +4,20 @@ RSpec.describe Note, type: :model do
   before do
     @user = User.create(
       first_name: "Joe",
-      last_name:  "Tester",
-      email:      "joetester@example.com",
-      password:   "dottle-nouveau-pavilion-tights-furze",
+      last_name: "Tester",
+      email: "joetester@example.com",
+      password: "dottle-nouveau-pavilion-tights-furze",
     )
 
     @project = @user.projects.create(
       name: "Test Project",
     )
+  end
+
+  it "generates associated data from a factory" do
+    note = FactoryBot.create(:note)
+    puts "This note's project is #{note.project.inspect}"
+    puts "This note's user is #{note.user.inspect}"
   end
 
   it "is valid with a user, project, and message" do
