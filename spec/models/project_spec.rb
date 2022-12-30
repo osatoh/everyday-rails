@@ -20,7 +20,6 @@ RSpec.describe Project, type: :model do
   end
 
   it "allows two users to share a project name" do
-
     @user.projects.create(
       name: "Test Project",
     )
